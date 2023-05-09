@@ -20,11 +20,14 @@
 <body>
     <div class="container d-flex" id="demo"></div>
     <script>
+        let url = location.href;
+        let ss = new URL(url).searchParams.get("id")
         fetch("data.json")
             .then(x => x.json())
             .then(items => {
                 Object.entries(items).forEach((entry) => {
                     let [key, value] = entry
+                    if(value.id == ss){
                     document.getElementById("demo").innerHTML += 
                     `<div class="card m-2" style="width: 18rem;">
                           <img src="${value.img}" class="card-img-top" alt="...">
@@ -33,7 +36,7 @@
                            <p class="card-text">${"Age"+" : "+value.age}</p>
                            <p class="card-text">${"ID"+" : "+value.id}</p>
                        </div>
-                    </div>`
+                    </div>`}
                 })
 
 
