@@ -1,0 +1,31 @@
+
+         [  {
+                "name": "Samsung A32",
+                "title": "Samsung",
+                "price": 76000,
+                "src": "download.jpg",
+                "id": 4533
+            },
+            {
+                "name": "Samsung M31",
+                "title": "Samsung",
+                "price": 6756,
+                "src": "download.jpg",
+                "id": 897
+            },
+            {
+                "name": "Samsung A23",
+                "title": "Samsung",
+                "price": 46000,
+                "src": "download.jpg",
+                "id": 667
+            },
+            {
+                "name": "Samsung S21 FE",
+                "title": "Samsung",
+                "price": 76000,
+                "src": "download.jpg",
+                "id": 7866
+            }
+         ]
+        
