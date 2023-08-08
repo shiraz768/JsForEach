@@ -44,7 +44,7 @@ $(document).ready(function () {
             <h3 class="card-title">${value.name}</h3>
                 <h5 class="card-title">${value.title}</h5>
                 <p class="card-text">${value.price}</p>
-                <div class="container" id="count${value.id}"> 
+                <div class="container" id="counttt${value.id}"> 
                 <button id="increment" class="btn btn-primary" onclick="increment(${value.id})" >+</button>
                 <div class="row g-3 align-items-center">
                    <div class="col-auto">
@@ -110,9 +110,10 @@ $("#count").html(counter)
     })
 })
 function increment(id){
+    let x = document.getElementById("count"+id)
     console.log(id);
+    console.log(x)
 }
 
 
-    let x = document.getElementById(this)
-    console.log(x)
+   
