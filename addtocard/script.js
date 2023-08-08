@@ -44,9 +44,13 @@ $(document).ready(function () {
             <h3 class="card-title">${value.name}</h3>
                 <h5 class="card-title">${value.title}</h5>
                 <p class="card-text">${value.price}</p>
-                <div class=container id="counter"> 
-                <button id="increment" class="btn btn-primary" >+</button>
-                <div id="counter-val">0</div>
+                <div class="container" id="count${value.id}"> 
+                <button id="increment" class="btn btn-primary" onclick="increment(${value.id})" >+</button>
+                <div class="row g-3 align-items-center">
+                   <div class="col-auto">
+                     <input type="number" name="" id="count${value.id}" class="form-control">
+                   </div>
+                     </div>
                 <button id="decrement" class="btn btn-danger">-</button>
                 <button id="reset">Reset</button>
                 </div> 
@@ -55,52 +59,60 @@ $(document).ready(function () {
         </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick=${save()}>Save</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="">Save</button>
             </div>
         </div>
     </div>
   </div>
   `
  
- 
-function save(){
-    let obj = {
-        name:value.name,
-        title : value.title,
-        price: value.price
-     }
-if(localStorage.getItem("data1")==null){
-    localStorage.setItem("data1","[]")
-}
-let old_data = JSON.parse(localStorage.getItem("data1"));
-// console.log(old_data)
-old_data.push(obj)
-//   console.log(old_data)
-localStorage.setItem("data1",JSON.stringify(old_data))
-}
 })
 
 $("#cards").html(x)
 $("#mod").html(y);
 
 $("#increment").click(()=>{
-    counter++
-$("#counter-val").html(counter)
+    let x =$(this).next("div").text();
+    console.log()
+//     counter++
+// $("#count").html(counter)
 })
 $("#decrement").click(()=>{
     counter--
-$("#counter-val").html(counter)
+$("#count").html(counter)
 })
 
-$("#reset").click(()=>{
-    counter = 0
-$("#counter-val").html(counter)
-})
-        
+// $("#reset").click(()=>{
+//     counter = 0
+//     $("#count").html(counter)
+// })
+     
 
 
-}
+// function save(){
+//     let obj = {
+//         name:value.name,
+//         title : value.title,
+//         price: value.price
+//      }
+//  if(localStorage.getItem("data1")==null){
+//     localStorage.setItem("data1","[]")
+//  }
+//  let old_data = JSON.parse(localStorage.getItem("data1"));
+//  // console.log(old_data)
+//  old_data.push(obj)
+//  //   console.log(old_data)
+//  localStorage.setItem("data1",JSON.stringify(old_data))
+//  }
+ 
+ }
 
     })
-
 })
+function increment(id){
+    console.log(id);
+}
+
+
+    let x = document.getElementById(this)
+    console.log(x)
