@@ -6,10 +6,10 @@ $(document).ready(function () {
         success: (data) => {
             let x = "";
             let y = "";
-            let counter = 0;
-           
-            
-            
+
+
+
+
             $.each((data), function (_index, value) {
 
                 x += `<div class="col-lg-3">
@@ -47,73 +47,77 @@ $(document).ready(function () {
                 <div class="container" id="counttt${value.id}"> 
                 <button id="increment" class="btn btn-primary" onclick="increment(${value.id})" >+</button>
                 <div class="row g-3 align-items-center">
-                   <div class="col-auto">
-                     <input type="number" name="" id="count${value.id}" class="form-control">
+                <div class="col-auto">
+                <span id="count${value.id}">0</span>
+                <span id="total${value.id}">0</span>
                    </div>
                      </div>
-                <button id="decrement" class="btn btn-danger">-</button>
-                <button id="reset">Reset</button>
+                <button id="decrement" class="btn btn-danger" onclick="decrement(${value.id})">-</button>
+                <button id="reset" class="btn btn-info" onclick="reset(${value.id})">Reset</button>
+                <button id="reset" class="btn btn-info" onclick="total(${value.id},${value.price})">total</button>
                 </div> 
                 
             </div>
         </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="">Save</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="save()">Save</button>
             </div>
         </div>
     </div>
   </div>
   `
- 
-})
 
-$("#cards").html(x)
-$("#mod").html(y);
+            })
 
-$("#increment").click(()=>{
-    let x =$(this).next("div").text();
-    console.log()
-//     counter++
-// $("#count").html(counter)
-})
-$("#decrement").click(()=>{
-    counter--
-$("#count").html(counter)
-})
-
-// $("#reset").click(()=>{
-//     counter = 0
-//     $("#count").html(counter)
-// })
-     
+            $("#cards").html(x)
+            $("#mod").html(y);
 
 
-// function save(){
-//     let obj = {
-//         name:value.name,
-//         title : value.title,
-//         price: value.price
-//      }
-//  if(localStorage.getItem("data1")==null){
-//     localStorage.setItem("data1","[]")
-//  }
-//  let old_data = JSON.parse(localStorage.getItem("data1"));
-//  // console.log(old_data)
-//  old_data.push(obj)
-//  //   console.log(old_data)
-//  localStorage.setItem("data1",JSON.stringify(old_data))
-//  }
- 
- }
+
+        }
 
     })
 })
-function increment(id){
-    let x = document.getElementById("count"+id)
-    console.log(id);
-    console.log(x)
+let counter = 0;
+function increment(id) {
+    counter++
+    let x = document.getElementById("count" + id)
+    x.innerHTML = counter
+
+}
+function decrement(id) {
+    counter--
+    let x = document.getElementById("count" + id)
+    x.innerHTML = counter
+
 }
 
-
-   
+function reset(id){
+    counter = 0
+    let x = document.getElementById("count"+id);
+    x.innerHTML = counter
+}
+function total(id,price){
+    let x = document.getElementById("count"+id).innerHTML;
+    let y = document.getElementById("total"+ id);
+    y.innerHTML = x * price
+    
+    
+}
+    
+            function save(){
+                let obj = {
+                    name: document.getElementById("name").innerHTML,
+                    title : "title",
+                    price: "price"
+                 }
+             if(localStorage.getItem("data1")==null){
+                localStorage.setItem("data1","[]")
+             }
+             let old_data = JSON.parse(localStorage.getItem("data1"));
+             // console.log(old_data)
+             old_data.push(obj)
+             //   console.log(old_data)
+             localStorage.setItem("data1",JSON.stringify(old_data))
+             }
